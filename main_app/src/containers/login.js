@@ -6,21 +6,23 @@ import { ToastContainer, toast,Bounce} from 'react-toastify';
 
 function Login(){
     const toastID = React.useRef(null);
+    const showErrorID = React.useRef(null);
+    const showSuccessID = React.useRef(null);
     const showSuccessMessage = () => {
         if(!toast.isActive(toastID.current)){
         toastID.current = toast.success("Succesfully Logged in!",{
         position:toast.POSITION.TOP_RIGHT,
         transition: Bounce,
-        toastID:toastID
+        toastID:showSuccessID
       });
     }
     }
     const showErrorMessage =()=>{
-      if(!toast.isActive(toastID.current)){
+      if(!toast.isActive(showErrorID.current)){
         toastID.current=toast.error('Enter valid credentials!',{
         position:toast.POSITION.TOP_RIGHT,
         transition: Bounce,
-        toastId:toastID
+        toastId:showErrorID
       })
     }
     }
@@ -98,8 +100,6 @@ return (<>
 </div>
 </div>
 </>);
-
 };
-
 export default Login;
 
